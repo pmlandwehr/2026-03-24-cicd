@@ -1,9 +1,13 @@
-# two things: when the workflow will run, what jobs will run.
+# three things: A label when the workflow will run, what jobs will run.
+
+name: My CI Workflow
+
 on:
   push:
 
 jobs:
   hello:
+    name: My Hello Job
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello!"

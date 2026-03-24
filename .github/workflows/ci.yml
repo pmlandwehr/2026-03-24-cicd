@@ -11,3 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello!"
+
+  goodbye:
+    name: My Goodbye Job
+    needs: hello
+    runs-on: windows-latest
+    steps:
+      - run: echo "Goodbye!"

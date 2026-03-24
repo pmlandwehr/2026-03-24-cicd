@@ -5,9 +5,9 @@ name: My CI Workflow
 on:
   push:
     branches: [main]  # will only run when we trigger the main branch.
-    pull_request:  # will run whenever someone creates a pull request
-    workflow_dispatch:  # will run whenever you choose to dispatch it.
-    
+  pull_request:  # will run whenever someone creates a pull request
+  workflow_dispatch:  # will run whenever you choose to dispatch it.
+
 jobs:
   hello:
     name: My Hello Job

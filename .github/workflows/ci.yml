@@ -35,8 +35,21 @@ jobs:
       - name: List the grandparent.
         run: ls ../..
 
+  ruff:
+    name: Ruff the repo.
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo.
+        uses: actions/checkout@v6
+      - name: Get ruff.
+        uses: astral-sh/ruff-action@v3
+      - name: Ruff the repo
+        run: ruff check --fix
+        run: ruff format
+
   test:
     name: Test the Python package.
+    needs: ruff
     strategy:
       matrix:
         python-version: ["3.10", "3.14"]

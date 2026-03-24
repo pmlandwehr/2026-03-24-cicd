@@ -8,6 +8,10 @@ on:
   pull_request:  # will run whenever someone creates a pull request
   workflow_dispatch:  # will run whenever you choose to dispatch it.
 
+permissions:
+  pages: write
+  id-token: write
+  
 jobs:
   hello:
     name: My Hello Job

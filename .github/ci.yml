@@ -1,0 +1,9 @@
+# two things: when the workflow will run, what jobs will run.
+on:
+  push:
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - echo "hello"

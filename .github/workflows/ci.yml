@@ -93,8 +93,6 @@ jobs:
       id: deployment
       with:
         path: slides/
-    - name: Deploy the slides.
-
 
   deploy-slides:
     environment:

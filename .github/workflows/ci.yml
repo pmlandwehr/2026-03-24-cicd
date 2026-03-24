@@ -48,7 +48,7 @@ jobs:
 
   test:
     name: Test the Python package.
-    needs: ruff
+    # needs: ruff   # skipping this dep.
     strategy:
       matrix:
         python-version: ["3.10", "3.14"]

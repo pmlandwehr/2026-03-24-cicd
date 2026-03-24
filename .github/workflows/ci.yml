@@ -105,10 +105,3 @@ deploy-slides:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-
-  actions/checkout
-actions/setup-python
-markdown-slides from https://gitlab.com/da_doomer/markdown-slides
-actions/upload-pages-artifact
-actions/deploy-pages

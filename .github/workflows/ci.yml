@@ -73,3 +73,42 @@ jobs:
         run: pip install .[test]
       - name: Run the tests.
         run: pytest -vv
+
+compile-and-upload-slides:
+  name: Download, compile, and upload the slides
+  runs-on: ubuntu-latest
+  steps:
+  - name: Check out the repo.
+    uses: actions/checkout@v6
+  - name: Install a specific python version
+    uses: actions/setup-python@v6
+    with: "3.14"
+  - name: Install markdown-slides
+    runs: pip install git+https://gitlab.com/da_doomer/markdown-slides.git
+  - name: Compile the slides
+    runs: mdslides slides.md
+  - name: Publish the slides
+    uses: actions/upload-pages-artifact@v3
+    id: deployment
+    with:
+      path: slides/
+  - name: Deploy the slides.
+
+
+deploy-slides:
+  environment:
+    name: github-pages
+    url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: compile-and-upload-slides
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+
+  actions/checkout
+actions/setup-python
+markdown-slides from https://gitlab.com/da_doomer/markdown-slides
+actions/upload-pages-artifact
+actions/deploy-pages

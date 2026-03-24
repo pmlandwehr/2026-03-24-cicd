@@ -85,9 +85,9 @@ jobs:
       with:
         python-version: "3.14"
     - name: Install markdown-slides
-      runs: pip install git+https://gitlab.com/da_doomer/markdown-slides.git
+      run: pip install git+https://gitlab.com/da_doomer/markdown-slides.git
     - name: Compile the slides
-      runs: mdslides slides.md
+      run: mdslides slides.md
     - name: Publish the slides
       uses: actions/upload-pages-artifact@v3
       id: deployment

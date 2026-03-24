@@ -1,4 +1,4 @@
-# three things: A label when the workflow will run, what jobs will run.
+# two things: when the workflow will run, what jobs will run.
 
 name: My CI Workflow
 
@@ -18,3 +18,31 @@ jobs:
     runs-on: windows-latest
     steps:
       - run: echo "Goodbye!"
+
+  ls:
+    name: My List Job.
+    runs-on: ubuntu-latest
+    steps:
+      - name: List the directory.
+        run: ls .
+      - name: List the parent.
+        run: ls ..
+
+  test:
+    name: Test the Python package.
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo.
+        uses: actions/checkout@v6
+      - name: Install a specific python version
+        uses: actions/setup-python@v6
+        with:
+          python-version: 3.10
+      - name: List the directory.
+        run: ls .
+      - name: List the parent.
+        run: ls ..
+      - name: Install the package.
+        run: pip install .[test]
+      - name: Run the tests.
+        run: pytest -vv
